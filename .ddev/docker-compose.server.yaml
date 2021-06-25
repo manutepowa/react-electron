@@ -1,0 +1,23 @@
+version: '3.6'
+
+services:
+  server:
+    container_name: ddev-${DDEV_SITENAME}-server
+    build:
+      context: mydocker/server
+    volumes:
+      - ../server:/home/node/app
+    working_dir: /home/node/app
+    user: "node"
+    labels:
+      com.ddev.site-name: ${DDEV_SITENAME}
+      com.ddev.approot: $DDEV_APPROOT
+      com-ddev-app-url: server.ddev.site
+    stdin_open: true
+    network_mode: host
+    tty: true
+    # external_links:
+    #   - "ddev-router:server.ddev.site"
+    environment:
+      - VIRTUAL_HOST=server.ddev.site #NO FUNCIONA --> SOLO LOCALHOST:3002
+      - DISPLAY=$DISPLAY
