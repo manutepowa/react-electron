@@ -4,6 +4,7 @@
   "private": true,
   "main": "./background/main.ts",
   "dependencies": {
+    "@craco/craco": "^6.1.2",
     "@testing-library/jest-dom": "^5.14.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
@@ -20,10 +21,10 @@
     "wouter": "^2.7.4"
   },
   "scripts": {
-    "react-start": "PORT=3001 react-scripts start",
-    "react-build": "react-scripts build",
-    "react-test": "react-scripts test",
-    "react-eject": "react-scripts eject",
+    "react-start": "PORT=3001 craco start",
+    "react-build": "craco build",
+    "react-test": "craco test",
+    "react-eject": "craco eject",
     "start": "concurrently \"BROWSER=none npm run react-start\" \"wait-on http://localhost:3001 && electron . --no-sandbox\""
   },
   "browserslist": {
@@ -39,7 +40,10 @@
     ]
   },
   "devDependencies": {
+    "autoprefixer": "^9.8.6",
     "concurrently": "^6.2.0",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.4",
     "wait-on": "^5.3.0"
   },
   "eslintConfig": {
