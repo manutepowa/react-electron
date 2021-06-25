@@ -6,14 +6,21 @@ import { useLocation } from "wouter";
 const AuthContext = createContext(null)
 
 const AuthProvider = ({children}: {children: ReactChild}) => {
-    const {jwt, user, login, logout} = useUser()
+    const {me, jwt, user, login, logout} = useUser()
     const [location, setLocation] = useLocation();
 
     useEffect(() => {
-        if (!user) {
-            setLocation('/login')
-        }
-    }, [user, setLocation])
+        (async () => {
+            const sessionJwt = localStorage.getItem("jwt")
+            if (sessionJwt){
+                await me(sessionJwt)
+            }
+            if (!user) {
+                setLocation('/login')
+            }
+        })()
+    }, []);
+
 
     const userData = {
         jwt,

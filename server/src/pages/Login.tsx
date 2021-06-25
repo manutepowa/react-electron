@@ -11,7 +11,7 @@ const Login = () => {
         if (user && location === '/login') {
             setLocation('/')
         }
-    }, [user, location, setLocation])
+    }, [user, location])
 
     return (
         <div>

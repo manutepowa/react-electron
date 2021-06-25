@@ -2,11 +2,11 @@ import React, { useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 
 const Home = () => {
-    const {user} = useContext(AuthContext)
+    const {jwt} = useContext(AuthContext)
     return (
         <div>
             HOME
-            {user && user.jwt}
+            {jwt && jwt}
         </div>
     )
 }

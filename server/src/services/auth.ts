@@ -20,4 +20,17 @@ export default class UserService {
 
         return await res.json()
     }
+
+
+    async me(jwt: string) {
+      const res = await fetch(`${this.url}/users/me`, {
+          method: 'GET',
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${jwt}`,
+          }
+        })
+
+      return await res.json()
+  }
 }

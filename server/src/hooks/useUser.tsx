@@ -12,20 +12,22 @@ const useUser = (): userProps => {
     console.log("entro logout");
     setUserObject(null)
   }
+
   const login = async (username: string, password: string) => {
-    console.log({
-      type: "login",
-      user: {
-        username,
-        password
-      }
-    });
     const {user, jwt} = await service.login(username, password)
     setUserObject(user)
     setJwt(jwt)
+    localStorage.setItem('jwt', jwt);
+  }
+
+  const me = async (sessionJwt: string) => {
+    const user = await service.me(sessionJwt)
+    setUserObject(user)
+    setJwt(sessionJwt)
   }
 
   return {
+    me,
     jwt,
     user: userObject,
     login,
