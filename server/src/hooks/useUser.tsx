@@ -9,15 +9,15 @@ const useUser = (): userProps => {
   const [jwt, setJwt] = useState(null)
 
   const logout = () => {
-    console.log("entro logout");
+    console.log('entro logout')
     setUserObject(null)
   }
 
   const login = async (username: string, password: string) => {
-    const {user, jwt} = await service.login(username, password)
+    const { user, jwt } = await service.login(username, password)
     setUserObject(user)
     setJwt(jwt)
-    localStorage.setItem('jwt', jwt);
+    localStorage.setItem('jwt', jwt)
   }
 
   const me = async (sessionJwt: string) => {

@@ -1,12 +1,11 @@
-import { AuthProvider } from './context/AuthContext';
+import { AuthProvider } from './context/AuthContext'
 import { Route, Switch } from 'wouter'
-import Home from './pages/Home';
-import Login from './pages/Login';
-import NavBar from './components/NavBar/NavBar';
-import './App.css';
+import Home from './pages/Home'
+import Login from './pages/Login'
+import NavBar from './components/NavBar/NavBar'
+import './App.css'
 
-function App() {
-
+function App () {
   return (
     <AuthProvider>
       <>
@@ -26,7 +25,7 @@ function App() {
         </Switch>
       </>
     </AuthProvider>
-  );
+  )
 }
 
-export default App;
+export default App
