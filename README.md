@@ -1,0 +1,3 @@
+## React - Electron
+
+Starter boilerplate
