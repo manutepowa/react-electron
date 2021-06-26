@@ -4,7 +4,7 @@ import LoginForm from '../components/LoginForm/LoginForm'
 import { useLocation } from 'wouter'
 
 const Login = () => {
-  const { user, login } = useContext(AuthContext)
+  const { error, user, login } = useContext(AuthContext)
   const [location, setLocation] = useLocation()
 
   useEffect(() => {
@@ -15,6 +15,7 @@ const Login = () => {
 
   return (
         <div>
+            <span className="text-red-600">{error && error}</span>
             <LoginForm
               login={login}
             />

@@ -9,7 +9,7 @@ RUN apt-get install --yes wine32 wine64
 RUN apt-get -y install x11-apps libgtkextra-dev libgconf2-dev libx11-xcb1 libnss3 libasound2 libxtst-dev libxss1 libgconf-2-4 libatk1.0-0 libatk-bridge2.0-0 libgdk-pixbuf2.0-0 libgtk-3-0 libgbm-dev libnss3-dev libxss-dev
 RUN apt-get -y install nautilus fontconfig libcanberra-gtk-module libcanberra-gtk0
 
-RUN npm i -g npm-check-updates @vue/cli
+RUN npm i -g npm-check-updates serve
 
 ENV SHELL=/bin/bash
 RUN ["rm","/bin/sh"]

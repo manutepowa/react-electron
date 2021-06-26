@@ -7,6 +7,7 @@ const service = new UserService()
 const useUser = (): userProps => {
   const [userObject, setUserObject] = useState(null)
   const [jwt, setJwt] = useState(null)
+  const [error, setError] = useState(null)
 
   const logout = () => {
     console.log('entro logout')
@@ -14,10 +15,14 @@ const useUser = (): userProps => {
   }
 
   const login = async (username: string, password: string) => {
-    const { user, jwt } = await service.login(username, password)
-    setUserObject(user)
-    setJwt(jwt)
-    localStorage.setItem('jwt', jwt)
+    const userResponse = await service.login(username, password)
+    if (userResponse.error) {
+      setError(userResponse.message[0].messages[0].message)
+    } else {
+      setUserObject(userResponse.user)
+      setJwt(userResponse.jwt)
+      localStorage.setItem('jwt', userResponse.jwt)
+    }
   }
 
   const me = async (sessionJwt: string) => {
@@ -27,6 +32,7 @@ const useUser = (): userProps => {
   }
 
   return {
+    error,
     me,
     jwt,
     user: userObject,

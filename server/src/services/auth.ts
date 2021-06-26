@@ -6,18 +6,22 @@ export default class UserService {
     }
 
     async login (username: string, password: string) {
-      const res = await fetch(`${this.url}/auth/local`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          identifier: username,
-          password: password
+      try {
+        const res = await fetch(`${this.url}/auth/local`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            identifier: username,
+            password: password
+          })
         })
-      })
 
-      return await res.json()
+        return await res.json()
+      } catch (error) {
+        return error
+      }
     }
 
     async me (jwt: string) {

@@ -5,7 +5,7 @@ import { useLocation } from 'wouter'
 const AuthContext = createContext(null)
 
 const AuthProvider = ({ children }: {children: ReactChild}) => {
-  const { me, jwt, user, login, logout } = useUser()
+  const { error, me, jwt, user, login, logout } = useUser()
   const [location, setLocation] = useLocation()
 
   useEffect(() => {
@@ -21,6 +21,7 @@ const AuthProvider = ({ children }: {children: ReactChild}) => {
   }, [])
 
   const userData = {
+    error,
     jwt,
     user,
     login,

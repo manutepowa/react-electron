@@ -1,5 +1,6 @@
 
 export interface userProps {
+  error: string,
   me: (sessionJwt: string) => Promise<void>,
   jwt: string,
   user: any,
