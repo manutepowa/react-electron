@@ -1,4 +1,4 @@
-export default class UserService {
+export default class Auth {
     url: string
 
     constructor () {

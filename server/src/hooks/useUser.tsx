@@ -1,8 +1,6 @@
 import { useState } from 'react'
 import { userProps } from '../types'
-import UserService from '../services/auth'
-
-const service = new UserService()
+import { UserService } from '../services'
 
 const useUser = (): userProps => {
   const [userObject, setUserObject] = useState(null)
@@ -15,7 +13,7 @@ const useUser = (): userProps => {
   }
 
   const login = async (username: string, password: string) => {
-    const userResponse = await service.login(username, password)
+    const userResponse = await UserService.login(username, password)
     if (userResponse.error) {
       setError(userResponse.message[0].messages[0].message)
     } else {
@@ -26,7 +24,7 @@ const useUser = (): userProps => {
   }
 
   const me = async (sessionJwt: string) => {
-    const user = await service.me(sessionJwt)
+    const user = await UserService.me(sessionJwt)
     setUserObject(user)
     setJwt(sessionJwt)
   }
