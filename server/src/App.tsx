@@ -21,6 +21,7 @@ function App () {
             <div>
               <b>404:</b> Sorry, this page isn't ready yet!
             </div>
+            <hr />
           </Route>
         </Switch>
       </>
